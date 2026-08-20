@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>HVAC Development Requirement Checklist | Samyou USA</title>
+<meta name="description" content="Submit HVAC product development requirements to the Samyou USA engineering team and download a formatted Excel checklist." />
+<meta property="og:title" content="HVAC Development Requirement Checklist | Samyou USA" />
+<meta property="og:description" content="From requirements to engineered solutions." />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="https://requirements.samyouusa.com/og.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="icon" href="https://samyouusa.com/wp-content/uploads/2025/10/ABUIABAEGAAggq-etQYomuf-ygMwghM40As-188x88.png" />
+
+<!-- Headings: Montserrat (matches samyouusa.com) -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet" />
+
+<style>
+:root{
+  --red:#bc132e; --red-dark:#941126; --ink:#26262c; --muted:#76767f;
+  --line:#e1e4e8; --soft:#f4f5f6; --bg:#f6f7fd; --paper:#fff; --green:#197a54;
+  --body:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  --head:'Montserrat',-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);-webkit-font-smoothing:antialiased;}
+button,input,textarea{font:inherit;}
+button{cursor:pointer;}
+
+/* HEADER */
+.site-header{height:82px;background:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(24px,5vw,80px);border-bottom:1px solid #ececec;position:sticky;top:0;z-index:20;}
+.brand{display:flex;align-items:center;gap:11px;text-decoration:none;}
+.brand img{height:46px;width:auto;display:block;}
+.header-meta{display:flex;align-items:center;gap:8px;color:#555d67;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-family:var(--head);}
+.header-meta svg{color:var(--red);}
+
+/* HERO */
+.hero{min-height:320px;background:linear-gradient(115deg,rgba(20,20,24,.97),rgba(38,38,44,.94)),radial-gradient(circle at 82% 8%,#7e1123,transparent 46%);color:#fff;display:flex;align-items:center;justify-content:space-between;gap:40px;padding:52px max(24px,calc((100vw - 1280px)/2));position:relative;overflow:hidden;}
+.hero:after{content:"";position:absolute;width:420px;height:420px;border:1px solid rgba(255,255,255,.08);border-radius:50%;right:-110px;top:-190px;box-shadow:0 0 0 70px rgba(255,255,255,.025),0 0 0 140px rgba(255,255,255,.018);}
+.kicker{color:#e6e8ea;font-size:11px;font-weight:800;letter-spacing:.2em;display:flex;align-items:center;gap:12px;margin:0 0 20px;font-family:var(--head);text-transform:uppercase;}
+.kicker span{width:38px;height:3px;background:var(--red);}
+.hero h1{font-family:var(--head);font-size:clamp(34px,4.4vw,56px);line-height:1.05;letter-spacing:-.01em;margin:0;font-weight:800;text-transform:none;}
+.hero h1 em{color:var(--red);font-style:normal;}
+.hero-copy{max-width:640px;color:#c3c8ce;font-size:16px;line-height:1.65;margin:20px 0 0;}
+.hero-badge{min-width:270px;max-width:320px;display:flex;gap:16px;align-items:flex-start;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.06);padding:20px;position:relative;z-index:1;}
+.hero-badge svg{color:#e63c58;flex:none;}
+.hero-badge strong,.hero-badge span{display:block;}
+.hero-badge strong{font-size:13px;margin-bottom:5px;font-family:var(--head);letter-spacing:.02em;}
+.hero-badge span{color:#aeb5bd;font-size:12px;line-height:1.5;}
+
+/* SHELL */
+.app-shell{max-width:1280px;margin:-1px auto 60px;background:#fff;display:grid;grid-template-columns:264px 1fr;min-height:800px;box-shadow:0 16px 50px rgba(18,22,28,.1);}
+.stepper{background:#f6f6f8;border-right:1px solid var(--line);padding:34px 25px;}
+.stepper-top{display:flex;justify-content:space-between;align-items:center;font-size:10px;letter-spacing:.14em;color:#666d75;font-weight:800;font-family:var(--head);}
+.stepper-top strong{color:var(--red);font-size:12px;}
+.progress-track{height:3px;background:#dcdde1;margin:11px 0 30px;}
+.progress-track i{display:block;height:100%;background:var(--red);transition:width .3s ease;}
+.stepper nav{display:grid;gap:4px;}
+.stepper nav button{border:0;background:transparent;text-align:left;display:flex;gap:13px;align-items:center;padding:10px 8px;color:#8b9096;transition:.15s;}
+.stepper nav button > span{width:30px;height:30px;border:1px solid #cfd2d5;border-radius:50%;display:grid;place-items:center;font-size:10px;font-weight:800;flex:none;font-family:var(--head);}
+.stepper nav button strong,.stepper nav button small{display:block;}
+.stepper nav button strong{font-size:13px;color:#70767e;font-family:var(--head);letter-spacing:.02em;}
+.stepper nav button small{font-size:10px;margin-top:3px;}
+.stepper nav button.active{background:#fff;box-shadow:0 3px 14px rgba(0,0,0,.05);}
+.stepper nav button.active > span{background:var(--red);border-color:var(--red);color:#fff;}
+.stepper nav button.active strong{color:var(--ink);}
+.stepper nav button.complete > span{border-color:var(--green);background:#e8f4ef;color:var(--green);}
+.stepper nav button.complete strong{color:#3f464d;}
+.support-note{margin-top:34px;padding-top:22px;border-top:1px solid #dcdde1;display:flex;gap:11px;color:#687079;}
+.support-note svg{color:var(--red);flex:none;}
+.support-note p{margin:0;}
+.support-note strong,.support-note span{display:block;}
+.support-note strong{font-size:12px;color:#333;margin-bottom:4px;font-family:var(--head);}
+.support-note span{font-size:10px;line-height:1.5;}
+
+/* FORM */
+.form-panel{padding:50px clamp(28px,5vw,72px) 0;min-width:0;}
+.form-heading{padding-bottom:27px;border-bottom:1px solid var(--line);margin-bottom:32px;}
+.form-heading > span{color:var(--red);font-size:10px;font-weight:800;letter-spacing:.18em;font-family:var(--head);}
+.form-heading h2{font-family:var(--head);font-size:30px;line-height:1.12;margin:11px 0 9px;font-weight:800;letter-spacing:-.01em;}
+.form-heading p{color:var(--muted);font-size:14px;margin:0;line-height:1.55;}
+.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 22px;}
+.field{display:block;min-width:0;}
+.field-wide{grid-column:1 / -1;}
+.field > span,.choice-group legend{display:block;color:#383e45;font-size:12px;font-weight:600;margin-bottom:8px;letter-spacing:.01em;}
+.field > span b{color:var(--red);}
+.input-shell{position:relative;}
+input,textarea{width:100%;border:1px solid #d7dade;background:#fff;color:var(--ink);outline:none;transition:.2s;border-radius:2px;}
+input{height:48px;padding:0 14px;}
+textarea{padding:13px 14px;resize:vertical;line-height:1.5;}
+input:focus,textarea:focus{border-color:var(--red);box-shadow:0 0 0 3px rgba(188,19,46,.08);}
+input::placeholder,textarea::placeholder{color:#a2a7ad;}
+.input-shell em{position:absolute;right:12px;top:50%;transform:translateY(-50%);color:#888f97;font-size:11px;font-style:normal;font-weight:700;}
+.input-shell:has(em) input{padding-right:50px;}
+.choice-group{padding:0;margin:0;border:0;min-width:0;}
+.choice-row{display:flex;flex-wrap:wrap;gap:9px;}
+.choice{position:relative;display:flex;align-items:center;gap:8px;min-height:40px;padding:9px 12px;border:1px solid #d9dce0;color:#59616a;background:#fff;font-size:12px;cursor:pointer;user-select:none;transition:.18s;border-radius:2px;}
+.choice:hover{border-color:#9d9fa3;}
+.choice.selected{border-color:var(--red);color:var(--ink);background:#fff7f8;box-shadow:inset 0 -2px 0 var(--red);}
+.radio-dot{width:15px;height:15px;border:1px solid #aaa;border-radius:50%;display:grid;place-items:center;flex:none;}
+.choice.selected .radio-dot{border:4px solid var(--red);}
+.check-box{width:16px;height:16px;border:1px solid #aeb3b8;display:grid;place-items:center;color:#fff;flex:none;border-radius:2px;}
+.choice.selected .check-box,.consent.checked .check-box{background:var(--red);border-color:var(--red);}
+.section-label{margin-top:5px;padding-bottom:9px;border-bottom:1px solid #e8eaec;}
+.section-label span{color:var(--red);font-size:10px;font-weight:800;letter-spacing:.16em;font-family:var(--head);}
+.review{display:grid;gap:18px;}
+.review-banner{display:flex;gap:14px;align-items:flex-start;padding:20px;background:#eff8f4;border-left:3px solid var(--green);color:#245c47;}
+.review-banner strong,.review-banner span{display:block;}
+.review-banner strong{font-size:14px;margin-bottom:4px;font-family:var(--head);}
+.review-banner span{font-size:12px;color:#4d725f;line-height:1.5;}
+.review-section{border:1px solid var(--line);}
+.review-section h3{font-size:12px;letter-spacing:.1em;text-transform:uppercase;margin:0;padding:13px 16px;background:#f5f6f7;border-bottom:1px solid var(--line);font-family:var(--head);font-weight:700;}
+.review-section dl{display:grid;grid-template-columns:repeat(2,1fr);margin:0;}
+.review-section dl div{padding:12px 16px;border-bottom:1px solid #eee;}
+.review-section dl div:nth-child(odd){border-right:1px solid #eee;}
+.review-section dt{color:#858b92;font-size:10px;text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px;font-family:var(--head);}
+.review-section dd{margin:0;font-size:12px;line-height:1.4;}
+.review-section dd i{color:#aaa;font-style:italic;}
+.consent{display:flex;gap:12px;align-items:flex-start;position:relative;cursor:pointer;padding:17px;border:1px solid var(--line);}
+.consent p{margin:0;}
+.consent strong,.consent small{display:block;}
+.consent strong{font-size:12px;font-family:var(--head);}
+.consent small{color:var(--muted);font-size:10px;line-height:1.5;margin-top:4px;}
+.error-message{margin:0;padding:12px 15px;color:#9b1830;background:#fff1f3;font-size:12px;border-radius:2px;}
+.success-message{padding:18px;border:1px solid #b8dfcf;background:#eff8f4;display:flex;align-items:center;gap:12px;color:#245c47;}
+.success-message div{flex:1;}
+.success-message strong,.success-message span{display:block;}
+.success-message strong{font-size:13px;font-family:var(--head);}
+.success-message span{font-size:11px;margin-top:4px;}
+.success-message button{display:flex;gap:7px;align-items:center;border:0;color:#fff;background:var(--green);padding:10px 12px;font-size:11px;font-weight:700;border-radius:2px;font-family:var(--head);}
+.form-actions{margin-top:42px;padding:24px 0 30px;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:16px;}
+.form-actions > p{color:#8c9299;font-size:10px;display:flex;align-items:center;gap:6px;margin:0;}
+.button-primary,.button-secondary{min-height:46px;padding:0 20px;display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;font-size:12px;font-weight:700;font-family:var(--head);letter-spacing:.06em;text-transform:uppercase;border-radius:2px;transition:.18s;}
+.button-primary{color:#fff;background:var(--red);}
+.button-primary:hover{background:var(--red-dark);}
+.button-secondary{color:#444b53;background:#eef0f1;}
+.button-secondary:hover{background:#e3e6e8;}
+button:disabled{opacity:.45;cursor:not-allowed;}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;}
+.spin{animation:spin 1s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg);}}
+.site-footer{max-width:1280px;margin:0 auto 34px;padding:0 4px;display:flex;justify-content:space-between;color:#777e85;font-size:10px;letter-spacing:.05em;text-transform:uppercase;font-family:var(--head);gap:12px;}
+.site-footer a{color:var(--red);text-decoration:none;}
+
+@media (max-width:900px){
+  .hero{display:block;padding-bottom:46px;}
+  .hero-badge{margin-top:28px;max-width:100%;}
+  .app-shell{grid-template-columns:1fr;margin:0;}
+  .stepper{padding:18px 20px;border-right:0;border-bottom:1px solid var(--line);}
+  .stepper nav{display:flex;overflow:auto;}
+  .stepper nav button{min-width:130px;}
+  .support-note{display:none;}
+  .form-panel{padding-top:34px;}
+}
+@media (max-width:620px){
+  .site-header{height:70px;padding:0 18px;}
+  .header-meta span{display:none;}
+  .hero{padding:42px 22px;min-height:0;}
+  .hero h1{font-size:34px;}
+  .hero-copy{font-size:15px;}
+  .stepper nav button div{display:none;}
+  .stepper nav button{min-width:auto;}
+  .form-panel{padding:30px 20px 0;}
+  .form-heading h2{font-size:26px;}
+  .form-grid{grid-template-columns:1fr;}
+  .field{grid-column:1 / -1;}
+  .form-actions{flex-wrap:wrap;}
+  .form-actions > p{order:3;width:100%;justify-content:center;}
+  .button-primary{flex:1;}
+  .review-section dl{grid-template-columns:1fr;}
+  .review-section dl div:nth-child(odd){border-right:0;}
+  .success-message{align-items:flex-start;flex-wrap:wrap;}
+  .success-message button{width:100%;justify-content:center;}
+  .site-footer{padding:0 18px;flex-wrap:wrap;gap:10px;}
+}
+</style>
+</head>
+<body>
+<main>
+  <header class="site-header">
+    <a class="brand" href="https://samyouusa.com" aria-label="Samyou USA home">
+      <img src="https://samyouusa.com/wp-content/uploads/2025/10/ABUIABAEGAAggq-etQYomuf-ygMwghM40As-188x88.png" alt="Samyou USA" />
+    </a>
+    <div class="header-meta" id="ic-shield"><span>Engineering Request Portal</span></div>
+  </header>
+
+  <section class="hero">
+    <div>
+      <p class="kicker"><span></span> HVAC Product Development</p>
+      <h1>Turn requirements into<br /><em>engineered solutions.</em></h1>
+      <p class="hero-copy">Complete this guided checklist and our HVAC engineering team will have the technical information needed to evaluate your project.</p>
+    </div>
+    <div class="hero-badge" id="ic-file">
+      <div><strong>Excel-ready</strong><span>Your submission downloads in the original checklist format.</span></div>
+    </div>
+  </section>
+
+  <div class="app-shell">
+    <aside class="stepper" aria-label="Questionnaire progress">
+      <div class="stepper-top"><span>PROJECT CHECKLIST</span><strong id="pct">0%</strong></div>
+      <div class="progress-track"><i id="bar" style="width:0%"></i></div>
+      <nav id="nav"></nav>
+      <div class="support-note" id="ic-clip"><p><strong>Save about 20 minutes</strong><span>Have performance targets and certification needs ready.</span></p></div>
+    </aside>
+
+    <section class="form-panel">
+      <div class="form-heading">
+        <span id="eyebrow">STEP 01 / 07</span>
+        <h2 id="stepTitle"></h2>
+        <p id="stepDesc"></p>
+      </div>
+      <form id="form" autocomplete="on"></form>
+      <footer class="form-actions">
+        <button type="button" class="button-secondary" id="backBtn"></button>
+        <p id="ic-save"><span>Your answers are reviewed before submission.</span></p>
+        <button type="button" class="button-primary" id="nextBtn"></button>
+      </footer>
+    </section>
+  </div>
+
+  <footer class="site-footer">
+    <span>© <span id="year"></span> Samyou USA</span>
+    <a href="https://samyouusa.com">samyouusa.com</a>
+    <span>HVAC Engineering &amp; Manufacturing Solutions</span>
+  </footer>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.4.0/exceljs.min.js"></script>
+<script>
+/* ============ ICONS (inline SVG, lucide-style) ============ */
+const SVG=(p,extra="")=>`<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ${extra}>${p}</svg>`;
+const IC={
+  shield:SVG('<path d="M20 13c0 5-3.5 7.5-8 9-4.5-1.5-8-4-8-9V5l8-3 8 3z"/><path d="m9 12 2 2 4-4"/>'),
+  file:SVG('<path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7z"/><path d="M14 2v5h5"/><path d="M8 13h2M8 17h2M14 13h2M14 17h2"/>','width="26" height="26"'),
+  clip:SVG('<rect width="8" height="4" x="8" y="2" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14 2 2 4-4"/>','width="20" height="20"'),
+  save:SVG('<path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><path d="M17 21v-8H7v8M7 3v5h8"/>','width="15" height="15"'),
+  arrowL:SVG('<path d="m12 19-7-7 7-7"/><path d="M19 12H5"/>','width="17" height="17"'),
+  arrowR:SVG('<path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>','width="17" height="17"'),
+  check:SVG('<path d="M20 6 9 17l-5-5"/>','width="13" height="13" stroke-width="3"'),
+  check15:SVG('<path d="M20 6 9 17l-5-5"/>','width="15" height="15"'),
+  circle:SVG('<circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/>','width="22" height="22"'),
+  circleBig:SVG('<circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/>','width="28" height="28"'),
+  download:SVG('<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/>','width="17" height="17"'),
+  loader:SVG('<path d="M21 12a9 9 0 1 1-6.219-8.56"/>','width="18" height="18"'),
+  fileSm:SVG('<path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7z"/><path d="M14 2v5h5"/>','width="18" height="18"'),
+};
+document.getElementById('ic-shield').insertAdjacentHTML('afterbegin',IC.shield);
+document.getElementById('ic-file').insertAdjacentHTML('afterbegin',IC.file);
+document.getElementById('ic-clip').insertAdjacentHTML('afterbegin',IC.clip);
+document.getElementById('ic-save').insertAdjacentHTML('afterbegin',IC.save);
+document.getElementById('year').textContent=new Date().getFullYear();
+
+/* ============ CONFIG ============ */
+const steps=[
+  {id:"project",eyebrow:"01",title:"Project overview",description:"Tell us who you are and what HVAC product you want to develop."},
+  {id:"performance",eyebrow:"02",title:"Performance requirements",description:"Define capacity, efficiency, operating range, noise, and testing conditions."},
+  {id:"compliance",eyebrow:"03",title:"Certification & compliance",description:"Select market certifications, energy labels, and hazardous-substance requirements."},
+  {id:"features",eyebrow:"04",title:"Functions & controls",description:"Choose user-facing functions, control preferences, and optional features."},
+  {id:"electrical",eyebrow:"05",title:"Electrical requirements",description:"Specify heaters, power architecture, and other electrical details."},
+  {id:"components",eyebrow:"06",title:"Components & validation",description:"Finish with component preferences, test ownership, and project notes."},
+  {id:"review",eyebrow:"07",title:"Review & submit",description:"Confirm the details before creating your engineering request."},
+];
+const capacityOptions=["7K","9K","12K","18K","24K","30K","36K","42K","48K","60K","Other"];
+const certifications=["CCC (3C)","Energy-Efficiency Registration","Energy-Conservation Certification","CE LVD","CE EMC","CE ErP","SASO Safety","SASO EMC","SASO EE","CB","BIS","SII","Australia Safety","Australia EMC","GEPS","ESMA","G-MARK","UL","ETL","CSA","AHRI","ENERGY STAR","Other"];
+const OPT=["Not Required","Required","Optional / Provision Reserved"];
+const testList=["Performance","Reliability","Noise","Packaging and Transportation","Electrical and Safety","EMC"];
+
+const data={
+  projectName:"",customerName:"",company:"",email:"",phone:"",country:"",salesTerritory:"",
+  annualDemand1:"",annualDemand2:"",annualDemand3:"",modelSpecification:"",capacities:[],otherCapacity:"",
+  climate:"",speedType:"",constructionType:"",operatingMode:"",sourceType:"",description:"",developmentScope:[],
+  voltage:"",phase:"",frequency:"",refrigerant:"",otherRefrigerant:"",referenceStandard:"",coolingCapacity:"",
+  heatingCapacity:"",capacityTolerance:"",efficiencyMetrics:"",efficiencyTolerance:"",sampleCapacity:"",sampleEfficiency:"",
+  iduHeatingRange:"",iduCoolingRange:"",oduHeatingRange:"",oduCoolingRange:"",connectionPipe:"",noiseStandard:"",
+  iduNoise:"",oduNoise:"",specialRequirements:"",certifications:[],otherCertification:"",certificationMethod:"",
+  exportEnergyLabel:"",rohs:"",weee:"",reach:"",otherHazardous:"",displayFormat:"",temperatureUnit:"",coldPlasma:"",
+  horizontalSwing:"",standbyPower:"",temperatureResolution:"",powerConfiguration:"",electrostaticCleaner:"",pm25Filter:"",
+  wifi:"",wiredController:"",thermostat:"",testMode:"",plugType:"",basePanHeater:"",crankcaseHeater:"",windingPreheat:"",
+  auxiliaryHeater:"",auxiliaryHeaterDetails:"",electricalNotes:"",compressorBrand:"",compressorModel:"",iduMotorType:"",
+  iduMotorBrand:"",oduMotorType:"",oduMotorBrand:"",sensorLogic:"",expansionDevice:"",heatExchanger:"",
+  customerTests:[],samyouTests:[],finalNotes:"",consent:"",website:"",
+};
+
+const labels={
+  projectName:"Project name",customerName:"Contact",company:"Company",email:"Email",country:"Country / region",salesTerritory:"Sales territory",modelSpecification:"Model / specification",
+  capacities:"Capacity options",climate:"Climate",speedType:"Speed type",constructionType:"Construction",operatingMode:"Operating mode",sourceType:"Heat source",developmentScope:"Development scope",
+  voltage:"Voltage",phase:"Phase",frequency:"Frequency",refrigerant:"Refrigerant",referenceStandard:"Reference standard",coolingCapacity:"Cooling capacity",heatingCapacity:"Heating capacity",efficiencyMetrics:"Efficiency target",connectionPipe:"Test connection piping",
+  certifications:"Certifications",certificationMethod:"Certification method",exportEnergyLabel:"Energy label",rohs:"RoHS",weee:"WEEE",reach:"REACH",
+  displayFormat:"Display format",temperatureUnit:"Temperature unit",coldPlasma:"Cold plasma",horizontalSwing:"Horizontal swing",standbyPower:"Standby power",wifi:"Wi-Fi",wiredController:"Wired controller",thermostat:"24 V thermostat",
+  compressorBrand:"Compressor brand",compressorModel:"Compressor model",iduMotorType:"IDU fan motor",oduMotorType:"ODU fan motor",expansionDevice:"Expansion device",heatExchanger:"Heat exchanger",
+};
+const summaryGroups=[
+  ["Project",["projectName","customerName","company","email","country","salesTerritory","modelSpecification"]],
+  ["Product",["capacities","climate","speedType","constructionType","operatingMode","sourceType","developmentScope"]],
+  ["Performance",["voltage","phase","frequency","refrigerant","referenceStandard","coolingCapacity","heatingCapacity","efficiencyMetrics","connectionPipe"]],
+  ["Compliance",["certifications","certificationMethod","exportEnergyLabel","rohs","weee","reach"]],
+  ["Functions",["displayFormat","temperatureUnit","coldPlasma","horizontalSwing","standbyPower","wifi","wiredController","thermostat"]],
+  ["Components",["compressorBrand","compressorModel","iduMotorType","oduMotorType","expansionDevice","heatExchanger"]],
+];
+
+/* ============ HELPERS ============ */
+const esc=s=>String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+const attr=s=>esc(s);
+function fieldHTML(o){
+  const req=o.required?' <b aria-hidden="true">*</b>':'';
+  const suffix=o.suffix?`<em>${esc(o.suffix)}</em>`:'';
+  const t=o.type||"text";
+  return `<label class="field${o.wide?' field-wide':''}"><span>${esc(o.label)}${req}</span><div class="input-shell"><input type="${t}" data-name="${o.name}" value="${attr(data[o.name]||'')}" placeholder="${attr(o.placeholder||'')}"${o.required?' required':''} inputmode="${t==='number'?'numeric':'text'}" />${suffix}</div></label>`;
+}
+function textareaHTML(o){
+  return `<label class="field field-wide"><span>${esc(o.label)}</span><textarea rows="${o.rows||4}" data-name="${o.name}" placeholder="${attr(o.placeholder||'')}">${esc(data[o.name]||'')}</textarea></label>`;
+}
+function choiceHTML(o){
+  const cur=data[o.name];
+  const rows=o.options.map(op=>`<label class="choice${cur===op?' selected':''}" data-choice="${o.name}" data-val="${attr(op)}"><span class="radio-dot"></span>${esc(op)}</label>`).join("");
+  return `<fieldset class="choice-group field-wide"><legend>${esc(o.label)}</legend><div class="choice-row">${rows}</div></fieldset>`;
+}
+function multiHTML(o){
+  const sel=Array.isArray(data[o.name])?data[o.name]:[];
+  const rows=o.options.map(op=>`<label class="choice${sel.includes(op)?' selected':''}" data-multi="${o.name}" data-val="${attr(op)}"><span class="check-box">${sel.includes(op)?IC.check:''}</span>${esc(op)}</label>`).join("");
+  return `<fieldset class="choice-group field-wide"><legend>${esc(o.label)}</legend><div class="choice-row">${rows}</div></fieldset>`;
+}
+function optionalHTML(o){return choiceHTML({label:o.label,name:o.name,options:OPT});}
+function sectionHTML(t){return `<div class="section-label field-wide"><span>${esc(t)}</span></div>`;}
+
+/* ============ STEP RENDERERS ============ */
+function stepContent(step){
+  const inc=(k,v)=>Array.isArray(data[k])&&data[k].includes(v);
+  if(step===0){
+    return `<div class="form-grid">
+      ${fieldHTML({label:"Project name",name:"projectName",placeholder:"e.g. North American packaged heat pump",required:true,wide:true})}
+      ${fieldHTML({label:"Contact name",name:"customerName",placeholder:"Full name",required:true})}
+      ${fieldHTML({label:"Company",name:"company",placeholder:"Company name",required:true})}
+      ${fieldHTML({label:"Business email",name:"email",type:"email",placeholder:"name@company.com",required:true})}
+      ${fieldHTML({label:"Phone",name:"phone",type:"tel",placeholder:"Country code + number"})}
+      ${fieldHTML({label:"Country / region",name:"country",placeholder:"e.g. Canada",required:true})}
+      ${fieldHTML({label:"Sales territory",name:"salesTerritory",placeholder:"Markets where product will be sold"})}
+      ${fieldHTML({label:"Estimated annual demand — Year 1",name:"annualDemand1",type:"number",placeholder:"Units"})}
+      ${fieldHTML({label:"Year 2",name:"annualDemand2",type:"number",placeholder:"Units"})}
+      ${fieldHTML({label:"Year 3",name:"annualDemand3",type:"number",placeholder:"Units"})}
+      ${fieldHTML({label:"Product model / specification",name:"modelSpecification",placeholder:"Existing model, platform, or target specification",wide:true})}
+      ${multiHTML({label:"Nominal capacity options",name:"capacities",options:capacityOptions})}
+      ${inc("capacities","Other")?fieldHTML({label:"Other capacity",name:"otherCapacity",placeholder:"e.g. 15K, 72K",wide:true}):""}
+      ${choiceHTML({label:"Climate classification",name:"climate",options:["T1 Frigid Zone","T1 Tropical Zone","T1 Temperate Zone","T1 Subtropical Zone","T2","T3"]})}
+      ${choiceHTML({label:"Compressor control",name:"speedType",options:["Fixed-Speed","Inverter"]})}
+      ${choiceHTML({label:"Construction",name:"constructionType",options:["Packaged / Unitary","Split"]})}
+      ${choiceHTML({label:"Operating mode",name:"operatingMode",options:["Heat Pump","Cooling Only"]})}
+      ${choiceHTML({label:"Source type",name:"sourceType",options:["Air Source","Water Source"]})}
+      ${multiHTML({label:"Development scope",name:"developmentScope",options:["Refrigeration System","Mechanical Structure","Electrical Controls","Complete Product"]})}
+      ${textareaHTML({label:"Project description",name:"description",placeholder:"Application, installation environment, target customer, and any important design context."})}
+    </div>`;
+  }
+  if(step===1){
+    return `<div class="form-grid">
+      ${sectionHTML("POWER & REFRIGERANT")}
+      ${fieldHTML({label:"Voltage",name:"voltage",placeholder:"208–230",suffix:"V"})}
+      ${fieldHTML({label:"Phase",name:"phase",placeholder:"1 or 3",suffix:"PH"})}
+      ${fieldHTML({label:"Frequency",name:"frequency",placeholder:"60",suffix:"Hz"})}
+      ${choiceHTML({label:"Refrigerant",name:"refrigerant",options:["R410A","R454B","R134a","R32","Other"]})}
+      ${data.refrigerant==="Other"?fieldHTML({label:"Other refrigerant",name:"otherRefrigerant",wide:true}):""}
+      ${sectionHTML("PERFORMANCE TARGETS")}
+      ${fieldHTML({label:"Reference standard",name:"referenceStandard",placeholder:"AHRI, DOE, CSA, customer standard…",wide:true})}
+      ${fieldHTML({label:"Cooling capacity",name:"coolingCapacity",placeholder:"Value and unit"})}
+      ${fieldHTML({label:"Heating capacity",name:"heatingCapacity",placeholder:"Value and unit"})}
+      ${fieldHTML({label:"Capacity tolerance",name:"capacityTolerance",placeholder:"e.g. ±5",suffix:"%"})}
+      ${fieldHTML({label:"Efficiency target",name:"efficiencyMetrics",placeholder:"EER / COP / SEER / HSPF / IEER"})}
+      ${fieldHTML({label:"Efficiency tolerance",name:"efficiencyTolerance",placeholder:"e.g. ±5",suffix:"%"})}
+      ${fieldHTML({label:"Test-sample capacity",name:"sampleCapacity",placeholder:"Acceptance target"})}
+      ${fieldHTML({label:"Test-sample efficiency",name:"sampleEfficiency",placeholder:"Acceptance target"})}
+      ${fieldHTML({label:"IDU heating temperature range",name:"iduHeatingRange",placeholder:"Min to max °F / °C"})}
+      ${fieldHTML({label:"IDU cooling temperature range",name:"iduCoolingRange",placeholder:"Min to max °F / °C"})}
+      ${fieldHTML({label:"ODU heating temperature range",name:"oduHeatingRange",placeholder:"Min to max °F / °C"})}
+      ${fieldHTML({label:"ODU cooling temperature range",name:"oduCoolingRange",placeholder:"Min to max °F / °C"})}
+      ${choiceHTML({label:"Test connection piping",name:"connectionPipe",options:["3 m","4 m","5 m","7.5 m","Other"]})}
+      ${fieldHTML({label:"Noise reference standard",name:"noiseStandard",placeholder:"Standard or no requirement"})}
+      ${fieldHTML({label:"Maximum IDU noise",name:"iduNoise",placeholder:"Target",suffix:"dB(A)"})}
+      ${fieldHTML({label:"Maximum ODU noise",name:"oduNoise",placeholder:"Target",suffix:"dB(A)"})}
+      ${textareaHTML({label:"Customer-specific performance requirements",name:"specialRequirements"})}
+    </div>`;
+  }
+  if(step===2){
+    return `<div class="form-grid">
+      ${multiHTML({label:"Required certifications",name:"certifications",options:certifications})}
+      ${inc("certifications","Other")?fieldHTML({label:"Other certification",name:"otherCertification",wide:true}):""}
+      ${choiceHTML({label:"Certification method",name:"certificationMethod",options:["Self-Declaration","Third-Party Certification","To Be Determined"]})}
+      ${choiceHTML({label:"Export energy label",name:"exportEnergyLabel",options:["Required","Not Required","To Be Determined"]})}
+      ${choiceHTML({label:"RoHS requirement",name:"rohs",options:["No Requirement","Customer Standard","SAMYOU Standard"]})}
+      ${choiceHTML({label:"WEEE requirement",name:"weee",options:["No Requirement","Customer Standard","SAMYOU Standard"]})}
+      ${choiceHTML({label:"REACH requirement",name:"reach",options:["No Requirement","Customer Standard","SAMYOU Standard"]})}
+      ${textareaHTML({label:"Other hazardous-substance restrictions",name:"otherHazardous",placeholder:"List any state, national, customer, or material restrictions."})}
+    </div>`;
+  }
+  if(step===3){
+    return `<div class="form-grid">
+      ${choiceHTML({label:"Temperature display format",name:"displayFormat",options:["Two Digits","Three Digits"]})}
+      ${choiceHTML({label:"Temperature display unit",name:"temperatureUnit",options:["Celsius","Fahrenheit","Selectable"]})}
+      ${optionalHTML({label:"Health function / cold plasma",name:"coldPlasma"})}
+      ${optionalHTML({label:"Horizontal air swing",name:"horizontalSwing"})}
+      ${choiceHTML({label:"Standby power consumption",name:"standbyPower",options:["No Requirement","≤ 1 W","≤ 0.5 W","≤ 0.1 W"]})}
+      ${choiceHTML({label:"Temperature-setting resolution",name:"temperatureResolution",options:["1°C","0.5°C","0.1°C"]})}
+      ${choiceHTML({label:"Power-supply configuration",name:"powerConfiguration",options:["From Indoor Unit","From Outdoor Unit","Separate Indoor / Outdoor Supplies"]})}
+      ${optionalHTML({label:"Electrostatic air cleaner",name:"electrostaticCleaner"})}
+      ${optionalHTML({label:"PM2.5 filtration device",name:"pm25Filter"})}
+      ${optionalHTML({label:"Wi-Fi",name:"wifi"})}
+      ${optionalHTML({label:"Wired controller",name:"wiredController"})}
+      ${optionalHTML({label:"24 V thermostat",name:"thermostat"})}
+      ${textareaHTML({label:"Method for entering development test mode",name:"testMode"})}
+    </div>`;
+  }
+  if(step===4){
+    return `<div class="form-grid">
+      ${fieldHTML({label:"Plug type (indoor-unit power supply)",name:"plugType",placeholder:"NEMA / IEC type or description",wide:true})}
+      ${optionalHTML({label:"Base-pan heater",name:"basePanHeater"})}
+      ${optionalHTML({label:"Compressor crankcase heater band",name:"crankcaseHeater"})}
+      ${optionalHTML({label:"Compressor winding preheat",name:"windingPreheat"})}
+      ${optionalHTML({label:"Indoor-unit auxiliary electric heater",name:"auxiliaryHeater"})}
+      ${fieldHTML({label:"Auxiliary heater quantity & maximum power",name:"auxiliaryHeaterDetails",placeholder:"e.g. 2 stages, 10 kW maximum",wide:true})}
+      ${textareaHTML({label:"Other electrical requirements",name:"electricalNotes"})}
+    </div>`;
+  }
+  if(step===5){
+    return `<div class="form-grid">
+      ${fieldHTML({label:"Compressor brand requirement",name:"compressorBrand",placeholder:"Brand(s) or no preference"})}
+      ${fieldHTML({label:"Recommended compressor model",name:"compressorModel",placeholder:"Model(s), if known"})}
+      ${choiceHTML({label:"IDU fan motor type",name:"iduMotorType",options:["DC","AC","EC","No Preference"]})}
+      ${fieldHTML({label:"IDU fan motor brand",name:"iduMotorBrand",placeholder:"Brand or no preference"})}
+      ${choiceHTML({label:"ODU fan motor type",name:"oduMotorType",options:["DC","AC","EC","No Preference"]})}
+      ${fieldHTML({label:"ODU fan motor brand",name:"oduMotorBrand",placeholder:"Brand or no preference"})}
+      ${choiceHTML({label:"Temperature & pressure sensor logic",name:"sensorLogic",options:["Use SAMYOU / Adentech Logic","Customer-Specified Logic","To Be Determined"]})}
+      ${fieldHTML({label:"Expansion / throttling device",name:"expansionDevice",placeholder:"TXV, EEV, capillary, brand…"})}
+      ${fieldHTML({label:"Heat exchanger requirements",name:"heatExchanger",placeholder:"Material, coating, geometry…",wide:true})}
+      ${multiHTML({label:"Tests performed / witnessed by customer",name:"customerTests",options:testList})}
+      ${multiHTML({label:"Tests performed by SAMYOU",name:"samyouTests",options:testList})}
+      ${textareaHTML({label:"Final project notes",name:"finalNotes",placeholder:"Add any remaining commercial, schedule, packaging, or engineering information."})}
+    </div>`;
+  }
+  if(step===6){
+    const sections=summaryGroups.map(([title,keys])=>{
+      const rows=keys.map(k=>{const raw=data[k];const disp=Array.isArray(raw)?raw.join(", "):raw;return `<div><dt>${esc(labels[k]||k)}</dt><dd>${disp?esc(disp):'<i>Not specified</i>'}</dd></div>`;}).join("");
+      return `<section class="review-section"><h3>${esc(title)}</h3><dl>${rows}</dl></section>`;
+    }).join("");
+    return `<div class="review">
+      <div class="review-banner">${IC.circleBig}<div><strong>Your engineering request is ready to submit.</strong><span>Review the summary below. Blank optional fields remain editable in the downloaded Excel file.</span></div></div>
+      ${sections}
+      <label class="consent${data.consent==='yes'?' checked':''}" id="consent"><span class="check-box">${data.consent==='yes'?IC.check:''}</span><p><strong>I confirm these details are accurate.</strong><small>SAMYOU may use this information to evaluate and respond to this HVAC development request.</small></p></label>
+      <div id="msgArea"></div>
+    </div>`;
+  }
+  return "";
+}
+
+/* ============ STATE + RENDER ============ */
+let step=0, status="idle", submissionId="", errorMsg="";
+const form=document.getElementById('form');
+const nav=document.getElementById('nav');
+const backBtn=document.getElementById('backBtn');
+const nextBtn=document.getElementById('nextBtn');
+
+function canContinue(){
+  return step>0 || (data.projectName&&data.customerName&&data.company&&data.email&&data.country);
+}
+// short labels shown in the left stepper
+["Project","Performance","Compliance","Features","Electrical","Components","Review"].forEach((t,i)=>steps[i].labelText=t);
+
+function render(scrollTop){
+  const s=steps[step];
+  document.getElementById('eyebrow').textContent=`STEP ${s.eyebrow} / 07`;
+  document.getElementById('stepTitle').textContent=s.title;
+  document.getElementById('stepDesc').textContent=s.description;
+  const progress=Math.round((step/(steps.length-1))*100);
+  document.getElementById('pct').textContent=progress+"%";
+  document.getElementById('bar').style.width=progress+"%";
+  // nav
+  nav.innerHTML=steps.map((it,i)=>{
+    const cls=[i===step?'active':'',i<step?'complete':''].filter(Boolean).join(' ');
+    const mark=i<step?IC.check15:it.eyebrow;
+    const state=i<step?'Complete':i===step?'In progress':'Not started';
+    return `<button data-goto="${i}" class="${cls}"><span>${mark}</span><div><strong>${it.labelText}</strong><small>${state}</small></div></button>`;
+  }).join("");
+  // form
+  form.innerHTML=`<input class="hp" type="text" tabindex="-1" autocomplete="off" data-name="website" aria-hidden="true" />`+stepContent(step);
+  // actions
+  backBtn.innerHTML=IC.arrowL+' Back';
+  backBtn.disabled=step===0;
+  if(step<steps.length-1){
+    nextBtn.innerHTML='Continue '+IC.arrowR;
+    nextBtn.disabled=!canContinue();
+  } else {
+    if(status==='saving') nextBtn.innerHTML=IC.loader.replace('<svg','<svg class="spin"')+' Saving…';
+    else nextBtn.innerHTML='Submit &amp; download Excel '+IC.fileSm;
+    nextBtn.disabled=(status==='saving'||status==='success');
+  }
+  attachInputs();
+  if(step===6) renderMessages();
+  if(scrollTop) window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function attachInputs(){
+  form.querySelectorAll('input[data-name],textarea[data-name]').forEach(el=>{
+    el.addEventListener('input',e=>{ data[el.dataset.name]=el.value; if(step===0) nextBtn.disabled=!canContinue(); });
+  });
+  // radio choices — toggle in place; only re-render when a dependent field must show/hide
+  const choiceCond={refrigerant:1};
+  form.querySelectorAll('[data-choice]').forEach(el=>{
+    el.addEventListener('click',()=>{
+      const name=el.dataset.choice, v=el.dataset.val, prev=data[name];
+      data[name]=v;
+      form.querySelectorAll('[data-choice="'+name+'"]').forEach(x=>x.classList.toggle('selected',x===el));
+      if(choiceCond[name] && (v==='Other'||prev==='Other')) render();
+    });
+  });
+  // checkbox choices — toggle in place; re-render only for the conditional 'Other' fields
+  form.querySelectorAll('[data-multi]').forEach(el=>{
+    el.addEventListener('click',()=>{
+      const k=el.dataset.multi, v=el.dataset.val;
+      const list=Array.isArray(data[k])?data[k]:[];
+      const has=list.includes(v);
+      data[k]=has?list.filter(x=>x!==v):[...list,v];
+      el.classList.toggle('selected',!has);
+      const box=el.querySelector('.check-box'); if(box) box.innerHTML=!has?IC.check:'';
+      if((k==='capacities'||k==='certifications') && v==='Other') render();
+    });
+  });
+  // consent — pure in-place toggle, never re-render
+  const c=document.getElementById('consent');
+  if(c) c.addEventListener('click',()=>{
+    data.consent=data.consent==='yes'?'':'yes';
+    c.classList.toggle('checked',data.consent==='yes');
+    const box=c.querySelector('.check-box'); if(box) box.innerHTML=data.consent==='yes'?IC.check:'';
+  });
+}
+
+function renderMessages(){
+  const area=document.getElementById('msgArea'); if(!area) return;
+  let html="";
+  if(errorMsg) html+=`<p class="error-message">${esc(errorMsg)}</p>`;
+  if(status==='success') html+=`<div class="success-message">${IC.circle}<div><strong>Request submitted: ${esc(submissionId)}</strong><span>Your formatted Excel checklist has been downloaded.</span></div><button id="dlAgain">${IC.download} Download again</button></div>`;
+  area.innerHTML=html;
+  const dl=document.getElementById('dlAgain');
+  if(dl) dl.addEventListener('click',()=>buildWorkbook(data,submissionId));
+}
+
+backBtn.addEventListener('click',()=>{ if(step>0){ step--; render(true); }});
+nextBtn.addEventListener('click',()=>{
+  if(step<steps.length-1){ if(canContinue()){ step++; render(true); } }
+  else submit();
+});
+nav.addEventListener('click',e=>{
+  const b=e.target.closest('button[data-goto]'); if(!b) return;
+  const i=+b.dataset.goto; if(i<=step){ step=i; render(true); }
+});
+
+/* ============ SUBMIT ============ */
+async function submit(){
+  if(data.consent!=='yes'){ errorMsg="Please confirm that the information may be used to evaluate this project."; renderMessages(); return; }
+  status="saving"; errorMsg=""; render();
+  try{
+    const res=await fetch("/api/submit",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(data)});
+    let result={}; try{ result=await res.json(); }catch(e){}
+    if(!res.ok||!result.id) throw new Error(result.error||"We could not save the questionnaire.");
+    submissionId=result.id; status="success"; render();
+    await buildWorkbook(data,submissionId);
+  }catch(e){ status="error"; errorMsg=(e&&e.message)?e.message:"Something went wrong. Please try again."; render(); }
+}
+
+/* ============ EXCEL (client-side, uses original template) ============ */
+async function buildWorkbook(data,submissionId){
+  // Build a fresh, cleanly-structured workbook (no template loading).
+  const val=k=>Array.isArray(data[k])?data[k].join(", "):String(data[k]==null?"":data[k]).trim();
+  const caps=[val("capacities"),val("otherCapacity")].filter(Boolean).join(", ");
+  const refr=val("refrigerant")==="Other"?("Other: "+val("otherRefrigerant")):val("refrigerant");
+  const demand=[val("annualDemand1"),val("annualDemand2"),val("annualDemand3")].filter(Boolean).join(" / ");
+  const aux=[val("auxiliaryHeater"),val("auxiliaryHeaterDetails")].filter(Boolean).join(" — ");
+  const certs=[val("certifications"),val("otherCertification")].filter(Boolean).join(", ");
+
+  const groups=[
+    ["Project & Contact",[
+      ["Project name",val("projectName")],["Contact name",val("customerName")],["Company",val("company")],
+      ["Business email",val("email")],["Phone",val("phone")],["Country / region",val("country")],
+      ["Sales territory",val("salesTerritory")],["Estimated annual demand (Y1 / Y2 / Y3)",demand],
+      ["Product model / specification",val("modelSpecification")],
+    ]],
+    ["Product",[
+      ["Nominal capacity options",caps],["Climate classification",val("climate")],["Compressor control",val("speedType")],
+      ["Construction",val("constructionType")],["Operating mode",val("operatingMode")],["Source type",val("sourceType")],
+      ["Development scope",val("developmentScope")],["Project description",val("description")],
+    ]],
+    ["Performance",[
+      ["Voltage",val("voltage")],["Phase",val("phase")],["Frequency",val("frequency")],["Refrigerant",refr],
+      ["Reference standard",val("referenceStandard")],["Cooling capacity",val("coolingCapacity")],["Heating capacity",val("heatingCapacity")],
+      ["Capacity tolerance",val("capacityTolerance")],["Efficiency target",val("efficiencyMetrics")],["Efficiency tolerance",val("efficiencyTolerance")],
+      ["Test-sample capacity",val("sampleCapacity")],["Test-sample efficiency",val("sampleEfficiency")],
+      ["IDU heating temperature range",val("iduHeatingRange")],["IDU cooling temperature range",val("iduCoolingRange")],
+      ["ODU heating temperature range",val("oduHeatingRange")],["ODU cooling temperature range",val("oduCoolingRange")],
+      ["Test connection piping",val("connectionPipe")],["Noise reference standard",val("noiseStandard")],
+      ["Maximum IDU noise",val("iduNoise")],["Maximum ODU noise",val("oduNoise")],
+      ["Customer-specific performance requirements",val("specialRequirements")],
+    ]],
+    ["Certification & Compliance",[
+      ["Required certifications",certs],["Certification method",val("certificationMethod")],["Export energy label",val("exportEnergyLabel")],
+      ["RoHS",val("rohs")],["WEEE",val("weee")],["REACH",val("reach")],["Other hazardous-substance restrictions",val("otherHazardous")],
+    ]],
+    ["Functions & Controls",[
+      ["Temperature display format",val("displayFormat")],["Temperature display unit",val("temperatureUnit")],
+      ["Health function / cold plasma",val("coldPlasma")],["Horizontal air swing",val("horizontalSwing")],
+      ["Standby power consumption",val("standbyPower")],["Temperature-setting resolution",val("temperatureResolution")],
+      ["Power-supply configuration",val("powerConfiguration")],["Electrostatic air cleaner",val("electrostaticCleaner")],
+      ["PM2.5 filtration device",val("pm25Filter")],["Wi-Fi",val("wifi")],["Wired controller",val("wiredController")],
+      ["24 V thermostat",val("thermostat")],["Development test-mode entry",val("testMode")],
+    ]],
+    ["Electrical",[
+      ["Plug type (indoor-unit supply)",val("plugType")],["Base-pan heater",val("basePanHeater")],
+      ["Compressor crankcase heater band",val("crankcaseHeater")],["Compressor winding preheat",val("windingPreheat")],
+      ["Indoor-unit auxiliary electric heater",aux],["Other electrical requirements",val("electricalNotes")],
+    ]],
+    ["Components & Validation",[
+      ["Compressor brand requirement",val("compressorBrand")],["Recommended compressor model",val("compressorModel")],
+      ["IDU fan motor type",val("iduMotorType")],["IDU fan motor brand",val("iduMotorBrand")],
+      ["ODU fan motor type",val("oduMotorType")],["ODU fan motor brand",val("oduMotorBrand")],
+      ["Temperature & pressure sensor logic",val("sensorLogic")],["Expansion / throttling device",val("expansionDevice")],
+      ["Heat exchanger requirements",val("heatExchanger")],["Tests witnessed by customer",val("customerTests")],
+      ["Tests performed by SAMYOU",val("samyouTests")],["Final project notes",val("finalNotes")],
+    ]],
+  ];
+
+  const wb=new ExcelJS.Workbook();
+  wb.creator="Samyou USA";
+  const ws=wb.addWorksheet("HVAC Requirement",{views:[{state:"frozen",ySplit:4}]});
+  ws.columns=[{width:38},{width:84}];
+  const RED={type:"pattern",pattern:"solid",fgColor:{argb:"FFBC132E"}};
+  const DARK={type:"pattern",pattern:"solid",fgColor:{argb:"FF26262C"}};
+  const LIGHT={type:"pattern",pattern:"solid",fgColor:{argb:"FFF2F3F5"}};
+  const bd={style:"thin",color:{argb:"FFE1E4E8"}};
+  const border={top:bd,left:bd,right:bd,bottom:bd};
+
+  ws.mergeCells("A1:B1");
+  const t=ws.getCell("A1"); t.value="SAMYOU USA"; t.fill=RED; t.font={bold:true,size:16,color:{argb:"FFFFFFFF"}}; t.alignment={vertical:"middle",indent:1}; ws.getRow(1).height=30;
+  ws.mergeCells("A2:B2");
+  const s=ws.getCell("A2"); s.value="HVAC Development Requirement Checklist"; s.fill=DARK; s.font={bold:true,size:11,color:{argb:"FFFFFFFF"}}; s.alignment={vertical:"middle",indent:1}; ws.getRow(2).height=20;
+  ws.getCell("A3").value="Submission ID"; ws.getCell("A3").font={bold:true}; ws.getCell("B3").value=submissionId;
+  ws.getCell("A4").value="Submitted"; ws.getCell("A4").font={bold:true};
+  try{ ws.getCell("B4").value=new Date().toLocaleString(); }catch(e){ ws.getCell("B4").value=new Date().toISOString(); }
+
+  let r=6;
+  groups.forEach(([title,rows])=>{
+    ws.mergeCells(`A${r}:B${r}`);
+    const h=ws.getCell(`A${r}`); h.value=title; h.fill=DARK; h.font={bold:true,size:11,color:{argb:"FFFFFFFF"}}; h.alignment={vertical:"middle",indent:1}; ws.getRow(r).height=20; r++;
+    rows.forEach(([label,value])=>{
+      const lc=ws.getCell(`A${r}`), vc=ws.getCell(`B${r}`);
+      lc.value=label; vc.value=value||"";
+      lc.fill=LIGHT; lc.font={bold:true,size:10,color:{argb:"FF26262C"}}; lc.alignment={vertical:"top",wrapText:true,indent:1};
+      vc.font={size:10,color:{argb:"FF26262C"}}; vc.alignment={vertical:"top",wrapText:true,indent:1};
+      lc.border=border; vc.border=border;
+      r++;
+    });
+    r++;
+  });
+
+  const buffer=await wb.xlsx.writeBuffer();
+  const blob=new Blob([buffer],{type:"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"});
+  const link=document.createElement("a"); link.href=URL.createObjectURL(blob); link.download=`SAMYOU_HVAC_Requirement_${submissionId}.xlsx`; link.click();
+  setTimeout(()=>URL.revokeObjectURL(link.href),1000);
+}
+
+render();
+</script>
+</body>
+</html>
