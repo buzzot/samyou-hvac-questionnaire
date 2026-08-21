@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Submissions Admin | Samyou USA</title>
+<meta name="robots" content="noindex, nofollow" />
+<link rel="icon" href="https://samyouusa.com/wp-content/uploads/2025/10/ABUIABAEGAAggq-etQYomuf-ygMwghM40As-188x88.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --red:#bc132e; --red-dark:#941126; --ink:#26262c; --muted:#76767f;
+  --line:#e1e4e8; --bg:#f6f7fd; --paper:#fff; --green:#197a54;
+  --body:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  --head:'Montserrat',-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);-webkit-font-smoothing:antialiased;}
+a{color:var(--red);}
+.topbar{height:66px;background:#26262c;color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(16px,4vw,40px);}
+.topbar .brand{display:flex;align-items:center;gap:12px;font-family:var(--head);font-weight:800;letter-spacing:.02em;}
+.topbar .brand span{color:var(--red);}
+.topbar .brand small{display:block;color:#aeb5bd;font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;}
+.topbar button{font-family:var(--head);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;border:1px solid rgba(255,255,255,.25);background:transparent;color:#fff;padding:8px 14px;border-radius:3px;cursor:pointer;}
+.topbar button:hover{background:rgba(255,255,255,.1);}
+.wrap{max-width:1400px;margin:0 auto;padding:22px clamp(16px,4vw,40px) 60px;}
+
+/* login */
+.login{min-height:70vh;display:grid;place-items:center;}
+.login-card{background:#fff;border:1px solid var(--line);border-radius:6px;box-shadow:0 16px 50px rgba(18,22,28,.08);padding:34px;width:min(400px,92vw);}
+.login-card h1{font-family:var(--head);font-size:20px;margin:0 0 6px;}
+.login-card p{color:var(--muted);font-size:13px;margin:0 0 20px;}
+.login-card label{display:block;font-size:12px;font-weight:700;margin-bottom:7px;}
+.login-card input{width:100%;height:46px;border:1px solid #d7dade;border-radius:3px;padding:0 13px;font:inherit;outline:none;}
+.login-card input:focus{border-color:var(--red);box-shadow:0 0 0 3px rgba(188,19,46,.08);}
+.btn{font-family:var(--head);font-weight:700;text-transform:uppercase;letter-spacing:.06em;font-size:12px;border:0;border-radius:3px;padding:12px 18px;cursor:pointer;}
+.btn-primary{background:var(--red);color:#fff;}
+.btn-primary:hover{background:var(--red-dark);}
+.btn-primary:disabled{opacity:.5;cursor:not-allowed;}
+.btn-ghost{background:#eef0f1;color:#444b53;}
+.btn-ghost:hover{background:#e3e6e8;}
+.login-card .btn{width:100%;margin-top:20px;}
+.err{color:#9b1830;background:#fff1f3;border-radius:3px;padding:10px 12px;font-size:12px;margin-top:14px;}
+
+/* toolbar */
+.toolbar{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-bottom:16px;}
+.toolbar h2{font-family:var(--head);font-size:20px;margin:0;flex:1;min-width:200px;}
+.toolbar .count{color:var(--muted);font-size:13px;font-weight:600;}
+.search{position:relative;}
+.search input{height:40px;width:min(320px,60vw);border:1px solid #d7dade;border-radius:3px;padding:0 13px;font:inherit;outline:none;}
+.search input:focus{border-color:var(--red);box-shadow:0 0 0 3px rgba(188,19,46,.08);}
+
+/* table */
+.table-wrap{background:#fff;border:1px solid var(--line);border-radius:6px;overflow:auto;}
+table{border-collapse:collapse;width:100%;font-size:13px;min-width:900px;}
+th{position:sticky;top:0;background:#f5f6f7;text-align:left;font-family:var(--head);font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:#5a6068;padding:12px 14px;border-bottom:1px solid var(--line);white-space:nowrap;}
+td{padding:11px 14px;border-bottom:1px solid #eef0f1;vertical-align:top;}
+tr:hover td{background:#fafbfc;}
+.pill{display:inline-block;font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px;background:#f0f1f2;color:#555;}
+.pill.New{background:#fdeaee;color:var(--red);}
+.pill.Reviewing{background:#fff6e5;color:#8a6d00;}
+.pill.Quoted{background:#e9f0fd;color:#1c56c2;}
+.pill.Won{background:#e8f4ef;color:var(--green);}
+.pill.Archived{background:#eef0f1;color:#777;}
+.rowbtn{font-family:var(--head);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;border:1px solid #d7dade;background:#fff;color:#444b53;padding:6px 9px;border-radius:3px;cursor:pointer;margin-right:5px;}
+.rowbtn:hover{border-color:var(--red);color:var(--red);}
+.muted{color:#aab0b7;}
+.loading{padding:40px;text-align:center;color:var(--muted);}
+
+/* modal */
+.modal-back{position:fixed;inset:0;background:rgba(20,22,26,.55);display:none;align-items:flex-start;justify-content:center;padding:40px 16px;overflow:auto;z-index:50;}
+.modal-back.open{display:flex;}
+.modal{background:#fff;border-radius:6px;width:min(760px,100%);box-shadow:0 20px 60px rgba(0,0,0,.3);}
+.modal-head{display:flex;align-items:center;justify-content:space-between;padding:18px 22px;border-bottom:1px solid var(--line);}
+.modal-head h3{font-family:var(--head);font-size:16px;margin:0;}
+.modal-head button{border:0;background:transparent;font-size:22px;cursor:pointer;color:#888;line-height:1;}
+.modal-body{padding:8px 22px 22px;}
+.sec{font-family:var(--head);font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--red);font-weight:700;margin:18px 0 6px;}
+dl.grid{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:0;}
+dl.grid > div{padding:8px 10px;border-bottom:1px solid #eef0f1;}
+dl.grid dt{font-size:10px;text-transform:uppercase;letter-spacing:.04em;color:#8b9096;margin-bottom:3px;}
+dl.grid dd{margin:0;font-size:13px;line-height:1.4;white-space:pre-wrap;}
+.modal-actions{padding:16px 22px;border-top:1px solid var(--line);display:flex;gap:10px;justify-content:flex-end;}
+@media (max-width:640px){ dl.grid{grid-template-columns:1fr;} }
+</style>
+</head>
+<body>
+<div id="app"></div>
+
+<div class="modal-back" id="modalBack"><div class="modal">
+  <div class="modal-head"><h3 id="modalTitle">Submission</h3><button id="modalClose" aria-label="Close">&times;</button></div>
+  <div class="modal-body" id="modalBody"></div>
+  <div class="modal-actions"><button class="btn btn-ghost" id="modalExcel">Download Excel</button><button class="btn btn-primary" id="modalCloseBtn">Close</button></div>
+</div></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.4.0/exceljs.min.js"></script>
+<script>
+let pwd = "";
+let rows = [];
+const app = document.getElementById("app");
+const esc = s => String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+const val = (o,k)=>{ const v=o&&o[k]; return Array.isArray(v)?v.join(", "):(v==null?"":String(v)); };
+
+/* ---------- login screen ---------- */
+function renderLogin(msg){
+  app.innerHTML = `
+  <div class="topbar"><div class="brand"><span>SAMYOU</span><div>USA<small>Submissions Admin</small></div></div></div>
+  <div class="wrap"><div class="login"><div class="login-card">
+    <h1>Admin sign in</h1>
+    <p>Enter the admin password to view HVAC requirement submissions.</p>
+    <label for="pw">Password</label>
+    <input id="pw" type="password" autocomplete="current-password" placeholder="••••••••" />
+    ${msg?`<div class="err">${esc(msg)}</div>`:""}
+    <button class="btn btn-primary" id="signin">Sign in</button>
+  </div></div></div>`;
+  const input = document.getElementById("pw");
+  const go = ()=>signIn(input.value);
+  document.getElementById("signin").onclick = go;
+  input.addEventListener("keydown", e=>{ if(e.key==="Enter") go(); });
+  input.focus();
+}
+
+async function signIn(candidate){
+  if(!candidate){ renderLogin("Please enter the password."); return; }
+  const btn = document.getElementById("signin");
+  if(btn){ btn.disabled = true; btn.textContent = "Checking…"; }
+  try{
+    const r = await fetch("/api/admin/list", { method:"POST", headers:{ "x-admin-password": candidate } });
+    const data = await r.json().catch(()=>({}));
+    if(r.status === 401){ renderLogin("Incorrect password."); return; }
+    if(!r.ok){ renderLogin(data.error || "Could not load submissions."); return; }
+    pwd = candidate; rows = Array.isArray(data.rows) ? data.rows : [];
+    renderTable();
+  }catch(e){ renderLogin("Network error. Try again."); }
+}
+
+async function refresh(){
+  try{
+    const r = await fetch("/api/admin/list", { method:"POST", headers:{ "x-admin-password": pwd } });
+    if(!r.ok){ if(r.status===401){ pwd=""; renderLogin("Session expired, sign in again."); } return; }
+    const data = await r.json();
+    rows = Array.isArray(data.rows)?data.rows:[];
+    renderTable();
+  }catch(e){}
+}
+
+/* ---------- table ---------- */
+function fmtDate(s){ if(!s) return ""; const d=new Date(s); return isNaN(d)?s:d.toLocaleString(); }
+
+function renderTable(){
+  app.innerHTML = `
+  <div class="topbar">
+    <div class="brand"><span>SAMYOU</span><div>USA<small>Submissions Admin</small></div></div>
+    <div><button id="logout">Sign out</button></div>
+  </div>
+  <div class="wrap">
+    <div class="toolbar">
+      <h2>Submissions <span class="count" id="count"></span></h2>
+      <div class="search"><input id="q" type="search" placeholder="Search company, contact, email, country…" /></div>
+      <button class="btn btn-ghost" id="refresh">Refresh</button>
+      <button class="btn btn-ghost" id="csv">Export CSV</button>
+    </div>
+    <div class="table-wrap"><table>
+      <thead><tr>
+        <th>Submitted</th><th>ID</th><th>Company</th><th>Contact</th><th>Email</th><th>Country</th><th>Project</th><th>Status</th><th>Actions</th>
+      </tr></thead>
+      <tbody id="tbody"></tbody>
+    </table></div>
+  </div>`;
+  document.getElementById("logout").onclick = ()=>{ pwd=""; rows=[]; renderLogin(); };
+  document.getElementById("refresh").onclick = refresh;
+  document.getElementById("csv").onclick = exportCsv;
+  const q = document.getElementById("q");
+  q.addEventListener("input", ()=>drawRows(q.value.trim().toLowerCase()));
+  drawRows("");
+}
+
+function drawRows(filter){
+  const tbody = document.getElementById("tbody");
+  const list = rows.filter(r=>{
+    if(!filter) return true;
+    return [r.company,r.contact_name,r.email,r.country,r.project_name,r.submission_id].some(v=>String(v||"").toLowerCase().includes(filter));
+  });
+  document.getElementById("count").textContent = `(${list.length})`;
+  if(!list.length){ tbody.innerHTML = `<tr><td colspan="9" class="loading">No submissions yet.</td></tr>`; return; }
+  tbody.innerHTML = list.map((r,i)=>{
+    const idx = rows.indexOf(r);
+    const st = esc(r.status||"New");
+    return `<tr>
+      <td style="white-space:nowrap">${esc(fmtDate(r.submitted_at||r.created_at))}</td>
+      <td style="white-space:nowrap;font-family:monospace;font-size:11px">${esc(r.submission_id||"")}</td>
+      <td>${esc(r.company||"")||'<span class="muted">—</span>'}</td>
+      <td>${esc(r.contact_name||"")||'<span class="muted">—</span>'}</td>
+      <td>${r.email?`<a href="mailto:${esc(r.email)}">${esc(r.email)}</a>`:'<span class="muted">—</span>'}</td>
+      <td>${esc(r.country||"")||'<span class="muted">—</span>'}</td>
+      <td>${esc(r.project_name||"")||'<span class="muted">—</span>'}</td>
+      <td><span class="pill ${st}">${st}</span></td>
+      <td style="white-space:nowrap">
+        <button class="rowbtn" data-view="${idx}">Details</button>
+        <button class="rowbtn" data-xls="${idx}">Excel</button>
+      </td>
+    </tr>`;
+  }).join("");
+  tbody.querySelectorAll("[data-view]").forEach(b=>b.onclick=()=>openModal(rows[+b.dataset.view]));
+  tbody.querySelectorAll("[data-xls]").forEach(b=>b.onclick=()=>{ const r=rows[+b.dataset.xls]; buildWorkbook(r.data||{}, r.submission_id||"record"); });
+}
+
+/* ---------- details modal ---------- */
+const LABELS = {
+  projectName:"Project name",customerName:"Contact name",company:"Company",email:"Email",phone:"Phone",country:"Country / region",
+  salesTerritory:"Sales territory",annualDemand1:"Annual demand Y1",annualDemand2:"Annual demand Y2",annualDemand3:"Annual demand Y3",
+  modelSpecification:"Model / specification",capacities:"Capacity options",otherCapacity:"Other capacity",climate:"Climate",speedType:"Compressor control",
+  constructionType:"Construction",operatingMode:"Operating mode",sourceType:"Source type",description:"Project description",developmentScope:"Development scope",
+  voltage:"Voltage",phase:"Phase",frequency:"Frequency",refrigerant:"Refrigerant",otherRefrigerant:"Other refrigerant",referenceStandard:"Reference standard",
+  coolingCapacity:"Cooling capacity",heatingCapacity:"Heating capacity",capacityTolerance:"Capacity tolerance",efficiencyMetrics:"Efficiency target",
+  efficiencyTolerance:"Efficiency tolerance",sampleCapacity:"Test-sample capacity",sampleEfficiency:"Test-sample efficiency",iduHeatingRange:"IDU heating range",
+  iduCoolingRange:"IDU cooling range",oduHeatingRange:"ODU heating range",oduCoolingRange:"ODU cooling range",connectionPipe:"Test connection piping",
+  noiseStandard:"Noise standard",iduNoise:"Max IDU noise",oduNoise:"Max ODU noise",specialRequirements:"Special performance requirements",certifications:"Certifications",
+  otherCertification:"Other certification",certificationMethod:"Certification method",exportEnergyLabel:"Export energy label",rohs:"RoHS",weee:"WEEE",reach:"REACH",
+  otherHazardous:"Other hazardous-substance restrictions",displayFormat:"Display format",temperatureUnit:"Temperature unit",coldPlasma:"Cold plasma",
+  horizontalSwing:"Horizontal swing",standbyPower:"Standby power",temperatureResolution:"Temperature resolution",powerConfiguration:"Power configuration",
+  electrostaticCleaner:"Electrostatic cleaner",pm25Filter:"PM2.5 filter",wifi:"Wi-Fi",wiredController:"Wired controller",thermostat:"24 V thermostat",
+  testMode:"Test-mode entry",plugType:"Plug type",basePanHeater:"Base-pan heater",crankcaseHeater:"Crankcase heater",windingPreheat:"Winding preheat",
+  auxiliaryHeater:"Auxiliary heater",auxiliaryHeaterDetails:"Auxiliary heater details",electricalNotes:"Other electrical requirements",compressorBrand:"Compressor brand",
+  compressorModel:"Compressor model",iduMotorType:"IDU fan motor type",iduMotorBrand:"IDU fan motor brand",oduMotorType:"ODU fan motor type",oduMotorBrand:"ODU fan motor brand",
+  sensorLogic:"Sensor logic",expansionDevice:"Expansion device",heatExchanger:"Heat exchanger",customerTests:"Customer tests",samyouTests:"SAMYOU tests",finalNotes:"Final notes",
+};
+const GROUPS = [
+  ["Project & Contact",["projectName","customerName","company","email","phone","country","salesTerritory","annualDemand1","annualDemand2","annualDemand3","modelSpecification"]],
+  ["Product",["capacities","otherCapacity","climate","speedType","constructionType","operatingMode","sourceType","developmentScope","description"]],
+  ["Performance",["voltage","phase","frequency","refrigerant","otherRefrigerant","referenceStandard","coolingCapacity","heatingCapacity","capacityTolerance","efficiencyMetrics","efficiencyTolerance","sampleCapacity","sampleEfficiency","iduHeatingRange","iduCoolingRange","oduHeatingRange","oduCoolingRange","connectionPipe","noiseStandard","iduNoise","oduNoise","specialRequirements"]],
+  ["Certification & Compliance",["certifications","otherCertification","certificationMethod","exportEnergyLabel","rohs","weee","reach","otherHazardous"]],
+  ["Functions & Controls",["displayFormat","temperatureUnit","coldPlasma","horizontalSwing","standbyPower","temperatureResolution","powerConfiguration","electrostaticCleaner","pm25Filter","wifi","wiredController","thermostat","testMode"]],
+  ["Electrical",["plugType","basePanHeater","crankcaseHeater","windingPreheat","auxiliaryHeater","auxiliaryHeaterDetails","electricalNotes"]],
+  ["Components & Validation",["compressorBrand","compressorModel","iduMotorType","iduMotorBrand","oduMotorType","oduMotorBrand","sensorLogic","expansionDevice","heatExchanger","customerTests","samyouTests","finalNotes"]],
+];
+const modalBack = document.getElementById("modalBack");
+function closeModal(){ modalBack.classList.remove("open"); }
+document.getElementById("modalClose").onclick = closeModal;
+document.getElementById("modalCloseBtn").onclick = closeModal;
+modalBack.addEventListener("click", e=>{ if(e.target===modalBack) closeModal(); });
+
+function openModal(r){
+  const d = r.data || {};
+  document.getElementById("modalTitle").textContent = `${r.company||""} — ${r.submission_id||""}`;
+  let html = "";
+  GROUPS.forEach(([title,keys])=>{
+    const cells = keys.map(k=>{ const v = val(d,k); return v!=="" ? `<div><dt>${esc(LABELS[k]||k)}</dt><dd>${esc(v)}</dd></div>` : ""; }).join("");
+    if(cells) html += `<div class="sec">${esc(title)}</div><dl class="grid">${cells}</dl>`;
+  });
+  if(!html) html = `<p class="muted" style="padding:12px 0">No detailed data stored for this submission.</p>`;
+  document.getElementById("modalBody").innerHTML = html;
+  document.getElementById("modalExcel").onclick = ()=>buildWorkbook(d, r.submission_id||"record");
+  modalBack.classList.add("open");
+}
+
+/* ---------- CSV export ---------- */
+function exportCsv(){
+  const cols = [["Submitted At","submitted_at"],["Submission ID","submission_id"],["Company","company"],["Contact","contact_name"],["Email","email"],["Phone","phone"],["Country","country"],["Sales Territory","sales_territory"],["Project","project_name"],["Capacities","capacities"],["Construction","construction"],["Operating Mode","operating_mode"],["Refrigerant","refrigerant"],["Certifications","certifications"],["Annual Demand","annual_demand"],["Status","status"]];
+  const q = (document.getElementById("q")?.value||"").trim().toLowerCase();
+  const list = rows.filter(r=> !q || [r.company,r.contact_name,r.email,r.country,r.project_name,r.submission_id].some(v=>String(v||"").toLowerCase().includes(q)));
+  const cell = v => `"${String(v==null?"":v).replace(/"/g,'""')}"`;
+  const lines = [cols.map(c=>cell(c[0])).join(",")];
+  list.forEach(r=> lines.push(cols.map(c=>cell(r[c[1]])).join(",")));
+  const blob = new Blob(["﻿"+lines.join("\r\n")], { type:"text/csv;charset=utf-8" });
+  const a = document.createElement("a"); a.href=URL.createObjectURL(blob); a.download=`SAMYOU_HVAC_submissions_${new Date().toISOString().slice(0,10)}.csv`; a.click();
+  setTimeout(()=>URL.revokeObjectURL(a.href),1000);
+}
+
+/* ---------- Excel (same fresh-generator as the questionnaire) ---------- */
+async function buildWorkbook(data, submissionId){
+  const v = k => Array.isArray(data[k]) ? data[k].join(", ") : String(data[k]==null?"":data[k]).trim();
+  const caps=[v("capacities"),v("otherCapacity")].filter(Boolean).join(", ");
+  const refr=v("refrigerant")==="Other"?("Other: "+v("otherRefrigerant")):v("refrigerant");
+  const demand=[v("annualDemand1"),v("annualDemand2"),v("annualDemand3")].filter(Boolean).join(" / ");
+  const aux=[v("auxiliaryHeater"),v("auxiliaryHeaterDetails")].filter(Boolean).join(" — ");
+  const certs=[v("certifications"),v("otherCertification")].filter(Boolean).join(", ");
+  const groups=[
+    ["Project & Contact",[["Project name",v("projectName")],["Contact name",v("customerName")],["Company",v("company")],["Business email",v("email")],["Phone",v("phone")],["Country / region",v("country")],["Sales territory",v("salesTerritory")],["Estimated annual demand (Y1 / Y2 / Y3)",demand],["Product model / specification",v("modelSpecification")]]],
+    ["Product",[["Nominal capacity options",caps],["Climate classification",v("climate")],["Compressor control",v("speedType")],["Construction",v("constructionType")],["Operating mode",v("operatingMode")],["Source type",v("sourceType")],["Development scope",v("developmentScope")],["Project description",v("description")]]],
+    ["Performance",[["Voltage",v("voltage")],["Phase",v("phase")],["Frequency",v("frequency")],["Refrigerant",refr],["Reference standard",v("referenceStandard")],["Cooling capacity",v("coolingCapacity")],["Heating capacity",v("heatingCapacity")],["Capacity tolerance",v("capacityTolerance")],["Efficiency target",v("efficiencyMetrics")],["Efficiency tolerance",v("efficiencyTolerance")],["Test-sample capacity",v("sampleCapacity")],["Test-sample efficiency",v("sampleEfficiency")],["IDU heating temperature range",v("iduHeatingRange")],["IDU cooling temperature range",v("iduCoolingRange")],["ODU heating temperature range",v("oduHeatingRange")],["ODU cooling temperature range",v("oduCoolingRange")],["Test connection piping",v("connectionPipe")],["Noise reference standard",v("noiseStandard")],["Maximum IDU noise",v("iduNoise")],["Maximum ODU noise",v("oduNoise")],["Customer-specific performance requirements",v("specialRequirements")]]],
+    ["Certification & Compliance",[["Required certifications",certs],["Certification method",v("certificationMethod")],["Export energy label",v("exportEnergyLabel")],["RoHS",v("rohs")],["WEEE",v("weee")],["REACH",v("reach")],["Other hazardous-substance restrictions",v("otherHazardous")]]],
+    ["Functions & Controls",[["Temperature display format",v("displayFormat")],["Temperature display unit",v("temperatureUnit")],["Health function / cold plasma",v("coldPlasma")],["Horizontal air swing",v("horizontalSwing")],["Standby power consumption",v("standbyPower")],["Temperature-setting resolution",v("temperatureResolution")],["Power-supply configuration",v("powerConfiguration")],["Electrostatic air cleaner",v("electrostaticCleaner")],["PM2.5 filtration device",v("pm25Filter")],["Wi-Fi",v("wifi")],["Wired controller",v("wiredController")],["24 V thermostat",v("thermostat")],["Development test-mode entry",v("testMode")]]],
+    ["Electrical",[["Plug type (indoor-unit supply)",v("plugType")],["Base-pan heater",v("basePanHeater")],["Compressor crankcase heater band",v("crankcaseHeater")],["Compressor winding preheat",v("windingPreheat")],["Indoor-unit auxiliary electric heater",aux],["Other electrical requirements",v("electricalNotes")]]],
+    ["Components & Validation",[["Compressor brand requirement",v("compressorBrand")],["Recommended compressor model",v("compressorModel")],["IDU fan motor type",v("iduMotorType")],["IDU fan motor brand",v("iduMotorBrand")],["ODU fan motor type",v("oduMotorType")],["ODU fan motor brand",v("oduMotorBrand")],["Temperature & pressure sensor logic",v("sensorLogic")],["Expansion / throttling device",v("expansionDevice")],["Heat exchanger requirements",v("heatExchanger")],["Tests witnessed by customer",v("customerTests")],["Tests performed by SAMYOU",v("samyouTests")],["Final project notes",v("finalNotes")]]],
+  ];
+  const wb=new ExcelJS.Workbook(); wb.creator="Samyou USA";
+  const ws=wb.addWorksheet("HVAC Requirement",{views:[{state:"frozen",ySplit:4}]});
+  ws.columns=[{width:38},{width:84}];
+  const RED={type:"pattern",pattern:"solid",fgColor:{argb:"FFBC132E"}}, DARK={type:"pattern",pattern:"solid",fgColor:{argb:"FF26262C"}}, LIGHT={type:"pattern",pattern:"solid",fgColor:{argb:"FFF2F3F5"}};
+  const bd={style:"thin",color:{argb:"FFE1E4E8"}}, border={top:bd,left:bd,right:bd,bottom:bd};
+  ws.mergeCells("A1:B1"); const t=ws.getCell("A1"); t.value="SAMYOU USA"; t.fill=RED; t.font={bold:true,size:16,color:{argb:"FFFFFFFF"}}; t.alignment={vertical:"middle",indent:1}; ws.getRow(1).height=30;
+  ws.mergeCells("A2:B2"); const s=ws.getCell("A2"); s.value="HVAC Development Requirement Checklist"; s.fill=DARK; s.font={bold:true,size:11,color:{argb:"FFFFFFFF"}}; s.alignment={vertical:"middle",indent:1}; ws.getRow(2).height=20;
+  ws.getCell("A3").value="Submission ID"; ws.getCell("A3").font={bold:true}; ws.getCell("B3").value=submissionId;
+  ws.getCell("A4").value="Submitted"; ws.getCell("A4").font={bold:true}; try{ ws.getCell("B4").value=new Date().toLocaleString(); }catch(e){ ws.getCell("B4").value=""; }
+  let r=6;
+  groups.forEach(([title,list])=>{
+    ws.mergeCells(`A${r}:B${r}`); const h=ws.getCell(`A${r}`); h.value=title; h.fill=DARK; h.font={bold:true,size:11,color:{argb:"FFFFFFFF"}}; h.alignment={vertical:"middle",indent:1}; ws.getRow(r).height=20; r++;
+    list.forEach(([label,value])=>{ const lc=ws.getCell(`A${r}`),vc=ws.getCell(`B${r}`); lc.value=label; vc.value=value||""; lc.fill=LIGHT; lc.font={bold:true,size:10,color:{argb:"FF26262C"}}; lc.alignment={vertical:"top",wrapText:true,indent:1}; vc.font={size:10,color:{argb:"FF26262C"}}; vc.alignment={vertical:"top",wrapText:true,indent:1}; lc.border=border; vc.border=border; r++; });
+    r++;
+  });
+  const buffer=await wb.xlsx.writeBuffer();
+  const blob=new Blob([buffer],{type:"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"});
+  const a=document.createElement("a"); a.href=URL.createObjectURL(blob); a.download=`SAMYOU_HVAC_Requirement_${submissionId}.xlsx`; a.click();
+  setTimeout(()=>URL.revokeObjectURL(a.href),1000);
+}
+
+renderLogin();
+</script>
+</body>
+</html>

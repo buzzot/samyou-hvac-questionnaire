@@ -38,7 +38,26 @@ const CFG = {
   // Optional: comma-separated list of origins allowed to POST cross-origin.
   // Leave empty when the page is served by THIS app (same-origin) — the default.
   allowedOrigins: (process.env.ALLOWED_ORIGINS || "").split(",").map(s => s.trim()).filter(Boolean),
+  // Password for the /admin page. Set ADMIN_PASSWORD in Railway. If empty, /admin is disabled.
+  adminPassword: process.env.ADMIN_PASSWORD || "",
 };
+
+/* ----------------- admin auth + data ----------------- */
+function checkAdmin(req) {
+  if (!CFG.adminPassword) return false;
+  const given = req.headers["x-admin-password"] || "";
+  const a = Buffer.from(String(given));
+  const b = Buffer.from(CFG.adminPassword);
+  if (a.length !== b.length) return false;
+  try { return crypto.timingSafeEqual(a, b); } catch { return false; }
+}
+async function listSubmissions() {
+  if (!CFG.supabase.url || !CFG.supabase.key) throw new Error("Supabase not configured");
+  const url = `${CFG.supabase.url.replace(/\/$/,"")}/rest/v1/${encodeURIComponent(CFG.supabase.table)}?select=*&order=submitted_at.desc&limit=2000`;
+  const r = await fetch(url, { headers: { apikey: CFG.supabase.key, Authorization: `Bearer ${CFG.supabase.key}` } });
+  if (!r.ok) throw new Error(`supabase http ${r.status}: ${(await r.text()).slice(0,200)}`);
+  return r.json();
+}
 
 /* ----------------- helpers ----------------- */
 const MIME = {
@@ -216,6 +235,18 @@ const server = http.createServer(async (req, res) => {
       if (req.method === "OPTIONS") { res.writeHead(204, corsHeaders(req)); return res.end(); }
       if (req.method === "POST") return handleSubmit(req, res);
       return json(res, 405, { error: "Method not allowed." });
+    }
+    if (pathname === "/admin") {
+      const file = path.join(PUBLIC_DIR, "admin.html");
+      try { const html = await readFile(file); res.writeHead(200, { "Content-Type": "text/html; charset=utf-8" }); return res.end(html); }
+      catch { res.writeHead(404); return res.end("Not found"); }
+    }
+    if (pathname === "/api/admin/list") {
+      if (req.method !== "POST") return json(res, 405, { error: "Method not allowed." });
+      if (!CFG.adminPassword) return json(res, 500, { error: "Admin is not configured (set ADMIN_PASSWORD)." });
+      if (!checkAdmin(req)) return json(res, 401, { error: "Incorrect password." });
+      try { return json(res, 200, { rows: await listSubmissions() }); }
+      catch (e) { return json(res, 500, { error: String(e.message || e) }); }
     }
     if (req.method === "GET" || req.method === "HEAD") return serveStatic(req, res);
     res.writeHead(405); res.end("Method not allowed");

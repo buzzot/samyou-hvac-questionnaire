@@ -163,6 +163,22 @@ Tip: to match your site's red, give the button your brand color **#BC132E**.
 
 ---
 
+## Admin page — view all submissions
+
+There's a password-protected admin at **`https://requirements.samyouusa.com/admin`** that lists every
+submission from Supabase, with search, a per-row detail view, per-row Excel re-download, and CSV export.
+
+To turn it on, add one more Railway variable:
+
+```
+ADMIN_PASSWORD=pick-a-strong-password
+```
+
+Then open `/admin`, enter that password, and you'll see the full table. Notes:
+- The password is checked server-side and never stored in the page; if you leave `ADMIN_PASSWORD` empty, `/admin` is disabled.
+- The page is marked `noindex`, but the only thing protecting it is the password — so use a strong one.
+- It reads live from Supabase every time you open it, so it always reflects the latest submissions.
+
 ## Good to know
 
 - **Fonts:** headings use **Montserrat** (Google Fonts) to match samyouusa.com; body text uses the
